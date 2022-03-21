@@ -1,11 +1,11 @@
 {
-  "name": "be8marzo",
+  "name": "lautsprecherbe",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon ./src/index.js"
   },
   "type": "module",
   "keywords": [],
