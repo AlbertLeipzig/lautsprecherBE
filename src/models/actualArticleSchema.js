@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
-const historyArticleSchema = new mongoose.Schema({
+const actualArticleSchema = new mongoose.Schema({
     title : String,
     body : String,
     author: Array,
@@ -11,6 +11,6 @@ const historyArticleSchema = new mongoose.Schema({
     approved : Boolean
   })
 
-  const HistoryArticles = mongoose.model("historyArticles", historyArticleSchema, "historyArticles")
+  const Articles = mongoose.model("actualArticles", actualArticleSchema, "actualArticles")
 
-  export default HistoryArticles
+  export default Articles

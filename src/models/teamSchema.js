@@ -11,7 +11,7 @@ const teamSchema = new mongoose.Schema({
     approved : Boolean
   })
 
-  const TeamMember = mongoose.model("teamMember", teamSchema, "teamMember")
+  const TeamMember = mongoose.model("team", teamSchema, "team")
 
 
-  export default teamSchema
+  export default TeamMember

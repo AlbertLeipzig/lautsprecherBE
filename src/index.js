@@ -5,12 +5,13 @@ import morgan from "morgan";
 import express from "express";
 import cors from "cors";
 
-import articleRoute from "./routes/singleActualArticleRoute.js";
+import actualArticleRoute from "./routes/actualArticleRoute.js";
+import historyArticleRoute from "./routes/historyArticleRoute.js";
 import bandRoute from "./routes/bandRoute.js";
 import musicianRoute from "./routes/musicianRoute.js";
 import concertRoute from "./routes/concertRoute.js";
 import musicbusinessRoute from "./routes/musicbusinessRoute.js";
-import teamMemberRoute from "./routes/teamMemberRoute.js";
+import teamRoute from "./routes/teamRoute.js";
 import veranstaltungsortRoute from "./routes/veranstaltungsortRoute.js";
 
 const app = express()
@@ -28,19 +29,21 @@ app.get("/", (req, res) => {
     res.send("hi there")
 })
 
-app.use("/api/article", articleRoute)
+app.use("/api/actualarticle", actualArticleRoute)
+app.use("/api/historyarticle", historyArticleRoute)
 app.use("/api/musician", musicianRoute)
 app.use("/api/band", bandRoute)
 app.use("/api/concert", concertRoute)
 app.use("/api/veranstaltungsort", veranstaltungsortRoute)
 app.use("/api/musicbusiness", musicbusinessRoute)
-app.use("/api/team", teamMemberRoute)
+app.use("/api/team", teamRoute)
 
 
 app.listen(PORT, () => {
     console.log(`Server: http://localhost:${PORT}`)
     console.log(`RECORDS: http://localhost:${PORT}/api/musician`)
-    console.log(`ARTICLE: http://localhost:${PORT}/api/article`)
+    console.log(`ACTUAL ARTICLE: http://localhost:${PORT}/api/actualarticle`)
+    console.log(`HISTORY ARTICLE: http://localhost:${PORT}/api/historyarticle`)
     console.log(`BAND: http://localhost:${PORT}/api/band`)
     console.log(`CONCERT: http://localhost:${PORT}/api/concert`)
     console.log(`VERANSTALTUNGSORT:http://localhost:${PORT}/api/veranstaltungsort`)

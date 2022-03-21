@@ -1,6 +1,6 @@
 export const postTeamMember = (req, res) => {
     try {
-        const teamMember = {
+        const musician = {
           fname: req.body.fname,
           lname: req.body.lname,
           position: req.body.position,
@@ -12,7 +12,7 @@ export const postTeamMember = (req, res) => {
           approved: false
         };
         res.json({
-            data : teamMember,
+            data : musician,
             message : "success"
         })
       } catch (err) {

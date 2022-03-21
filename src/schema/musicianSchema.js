@@ -16,4 +16,4 @@ const musicianSchema = new mongoose.Schema({
   const Musician = mongoose.model("musician", musicianSchema, "musician")
 
 
-  export default musicianSchema
+  export default Musician
