@@ -1,18 +1,13 @@
-export const postTeamMember = (req, res) => {
+export const postSubscriber = (req, res) => {
     try {
-        const teamMember = {
+        const subscriber = {
           fname: req.body.fname,
           lname: req.body.lname,
-          position: req.body.position,
-          website: req.body.website,
           email: req.body.email,
-          socialMedia: req.body.socialMedia,
-          image: req.body.image,
-          password: req.body.password,
           approved: false
         };
         res.json({
-            data : teamMember,
+            data : subscriber,
             message : "success"
         })
       } catch (err) {
@@ -21,4 +16,4 @@ export const postTeamMember = (req, res) => {
           message: err,
         });
       }
-}
+  }

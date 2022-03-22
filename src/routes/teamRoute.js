@@ -5,7 +5,7 @@ import TeamMember from "../models/teamSchema.js"
 import  Schema from "../models/teamSchema.js"
 
 
-router.post("/add", async (req, res) => {
+router.post("/", async (req, res) => {
   const member = {
     fname : "",
     lname : "",

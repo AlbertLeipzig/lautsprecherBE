@@ -13,6 +13,7 @@ import concertRoute from "./routes/concertRoute.js";
 import musicbusinessRoute from "./routes/musicbusinessRoute.js";
 import teamRoute from "./routes/teamRoute.js";
 import veranstaltungsortRoute from "./routes/veranstaltungsortRoute.js";
+import subscriberRoute from "./routes/subscriberRoute.js";
 
 const app = express()
 
@@ -20,7 +21,12 @@ const PORT = process.env.PORT || 4000
 const MENSAJE = process.env.MENSAJE
 const PWD = process.env.PASSWORD
 
-app.use(cors())
+app.use(cors({
+    origin: process.env.FRONTEND,
+    credentials: true
+}))
+
+console.log(process.env.FRONTEND)
 app.use(morgan("tiny"))
 /* body parser */
 app.use(express.json())
@@ -37,6 +43,7 @@ app.use("/api/concert", concertRoute)
 app.use("/api/veranstaltungsort", veranstaltungsortRoute)
 app.use("/api/musicbusiness", musicbusinessRoute)
 app.use("/api/team", teamRoute)
+app.use("/api/subscribers", subscriberRoute)
 
 
 app.listen(PORT, () => {

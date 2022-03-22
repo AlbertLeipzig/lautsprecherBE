@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+const Schema = mongoose.Schema
 
 const teamSchema = new mongoose.Schema({
     fname : String,
@@ -11,4 +12,6 @@ const teamSchema = new mongoose.Schema({
     approved : Boolean
   })
 
-  export default teamSchema
+  const TeamSchema = mongoose.model("team", teamSchema, "team")
+
+  export default TeamSchema
