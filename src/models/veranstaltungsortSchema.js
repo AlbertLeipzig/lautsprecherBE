@@ -2,16 +2,16 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
 const veranstaltungsortSchema = new mongoose.Schema({
-    fname : String,
-    lname : String,
-    instrument: Array,
-    style : Array,
-    website : String,
-    mail : String,
-    socialMedia : String,
-    bands : Array,
+    address: {type: Object, required: true},
+    approved : {type: Boolean, required: true},
+    concerts: Array,
     image : String,
-    approved : Boolean
+    inhaber: {type: String, required: true},
+    mail : String,
+    phone : Number,
+    placeName: {type: String, required: true},
+    socialMedia: Object,
+    website : String
   })
 
   const Veranstaltungsort = mongoose.model("places", veranstaltungsortSchema, "places")

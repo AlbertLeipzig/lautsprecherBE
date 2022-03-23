@@ -1,17 +1,22 @@
 export const postConcert = (req, res) => {
   try {
       const concert = {
-        title: req.body.title,
-        band: req.body.band,
-        musician: req.body.musician,
-        style: req.body.style,
-        place: req.body.place,
-        time: req.body.time,
-        duration: req.body.duration,
+        approved: false,
+        address: {
+          number: req.body.number,
+          PLZ: req.body.PLZ,
+          street: req.body.street
+        },
+        bands: req.body.band,
+        concertTitle: req.body.concertTitle,
         cost: req.body.cost,
-        tickets: req.body.tickets,
+        date: req.body.date,
+        duration: req.body.duration,
         image: req.body.image,
-        approved: false
+        musicians: req.body.musicians,
+        place: req.body.place,
+        style: req.body.style,
+        tickets: req.body.tickets,
       };
       res.json({
           data : concert,

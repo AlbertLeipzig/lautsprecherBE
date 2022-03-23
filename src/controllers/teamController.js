@@ -1,15 +1,23 @@
 export const postTeamMember = (req, res) => {
     try {
         const teamMember = {
-          fname: req.body.fname,
-          lname: req.body.lname,
-          position: req.body.position,
-          website: req.body.website,
-          email: req.body.email,
-          socialMedia: req.body.socialMedia,
+          approved: false,
+          fName: req.body.fName,
+          lName: req.body.lName,
+          mail: req.body.mail,
           image: req.body.image,
           password: req.body.password,
-          approved: false
+          role: req.body.role,
+          socialMedia: {
+            fb: req.body.fb,
+            ig: req.body.ig,
+            tw: req.body.tw,
+            sc: req.body.sc,
+            yt: req.body.yt,
+            in: req.body.in,
+            twitch: req.body.twitch
+          },
+          website: req.body.website,
         };
         res.json({
             data : teamMember,

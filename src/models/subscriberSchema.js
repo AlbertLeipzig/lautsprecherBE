@@ -2,11 +2,14 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
 const subscriberSchema = new mongoose.Schema({
-    fname : String,
-    lname : String,
-    email : String,
-    approved : Boolean
-  })
+    approved : {type: Boolean, required: true},
+    fName : {type: String, required: true},
+    lName : {type: String, required: true},
+    mail : {type: String, required: true}
+  }, {
+    versionKey: false,
+     timestamps: true
+   })
 
   const SubscribersModel = mongoose.model("SubscribersModel", subscriberSchema, "subscribers")
 

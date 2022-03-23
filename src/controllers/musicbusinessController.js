@@ -1,19 +1,27 @@
 export const postMusicbusiness = (req, res) => {
     try {
         const musicbusiness = {
-          businessName: req.body.businessName,
-          fname: req.body.fname,
-          lname: req.body.lname,
-          address: req.body.address,
-          PLZ: req.body.PLZ,
-          phone: req.body.phone,
-          mail: req.body.mail,
-          website: req.body.website,
-          socialMedia: req.body.socialMedia,
-          presentation: req.body.presentation,
+          address: {
+            number: req.body.number,
+            PLZ: req.body.PLZ,
+            street: req.body.street
+          },
+          approved: false,
           image: req.body.image,
-          password: req.body.password,
-          approved: false
+          inhaber: req.body.inhaber,
+          mail: req.body.mail,
+          businessName: req.body.businessName,
+          phone: req.body.phone,
+          socialMedia: {
+            fb: req.body.fb,
+            ig: req.body.ig,
+            tw: req.body.tw,
+            sc: req.body.sc,
+            yt: req.body.yt,
+            in: req.body.in,
+            twitch: req.body.twitch
+          },
+          website: req.body.website
         };
         res.json({
             data : musicbusiness,

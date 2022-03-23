@@ -1,14 +1,16 @@
 import mongoose from "mongoose";
 
 const teamSchema = new mongoose.Schema({
-    fname : String,
-    lname : String,
-    position: String,
-    website : String,
-    mail : String,
-    socialMedia : String,
-    image : String,
-    approved : Boolean
+    approved : {type: Boolean, required: true},
+    fName : {type: String, required: true},
+    lName : {type: String, required: true},
+    mail : {type: String, required: true},
+    image : {type: String, required: true},
+    password: {type: String, required: true},
+    phone: Number,
+    role: {type: String, required: true},
+    socialMedia : Object,
+    website : String
   })
 
   const TeamMember = mongoose.model("team", teamSchema, "team")

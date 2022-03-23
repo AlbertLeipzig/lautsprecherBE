@@ -7,28 +7,23 @@ import Schema from "../models/concertSchema.js"
 
 router.post("/add", async (req, res) => {
   const concert = {
-    title : "Yahoooooooo",
-    band : "Sylos",
-    style : "Electro swing",
-    place : "Augustusplatz 1",
-    time : "0102",
-    mail : "mail@wagner.de",
-    socialMedia : "",
-    bands : "Gewandhaus",
-    image : "",
+    title : req.body.title,
+    band : req.body.bandName,
+    musician : req.body.musicianName,
+    style : req.body.style,
+    place : req.body.place,
+    time : req.body.time,
+    duration : req.body.duration,
+    cost : req.body.cost,
+    image : req.body.image,
     approved : true
   }
-  const newConcert = new Schema.Concerts(concert)
 
   try {
-    await newConcert.save( async (err, newConcertResult) => {
-      console.log("New Concert In")
-      res.end("Yes, NEW CONCERT CREATED")
-    })
+    await Concerts.create(req.body)
   }
   catch(err){
     console.log(err)
-    res.end("NOT A NEW CONCERT, SORRY")
   }
 })
 

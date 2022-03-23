@@ -2,16 +2,18 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
 const musicianSchema = new mongoose.Schema({
-    fname : {type : String, required : true },
-    lname : String,
-    instrument: Array,
+    fName : {type : String, required : true },
+    lname : {type: String, required: true},
+    mail : {type: String, required: true},
+    bands : Array,
+    date: Object,
+    image : String,
+    instruments: Array,
+    password: {type: String, required: true},
     style : Array,
     website : String,
-    mail : String,
-    socialMedia : String,
-    bands : Array,
-    image : String,
-    approved : Boolean
+    socialMedia : Object,
+    approved : {type: Boolean, required: true}
   })
 
   const Musicians = mongoose.model("musicians", musicianSchema, "musicians")

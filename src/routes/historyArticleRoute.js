@@ -7,25 +7,20 @@ import Schema from "../models/historyArticleSchema.js"
 
 router.post("/add", async (req, res) => {
   const article = {
-    title : "",
-    author : "",
+    title : req.body.title,
+    author : req.body.author,
     date : Date.now(),
-    tags : [],
-    body : "",
-    image : "",
+    tags : req.body.tags,
+    body : req.body.body,
+    image : req.body.image,
     approved : true
   }
-  const newArticle = new Schema.HistoryArticles(article)
 
   try {
-    await newArticle.save( async (err, newArticleResult) => {
-      console.log("New Article In")
-      res.end("Yes, NEW ARTICLE CREATED")
-    })
+    await HistoryArticle.create(req.body)
   }
   catch(err){
     console.log(err)
-    res.end("NOT A NEW ARTICLE, SORRY")
   }
 })
 

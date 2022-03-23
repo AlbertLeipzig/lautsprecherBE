@@ -2,13 +2,13 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
 const actualArticleSchema = new mongoose.Schema({
-    title : String,
-    body : String,
-    author: Array,
+    articleTitle : {type: String, required: true},
+    body : {type: String, required: true},
+    author: {type: String, required: true},
     date: String,
     tags : Array,
     image : String,
-    approved : Boolean
+    approved : {type: Boolean, required: true}
   })
 
   const Articles = mongoose.model("actualArticles", actualArticleSchema, "actualArticles")

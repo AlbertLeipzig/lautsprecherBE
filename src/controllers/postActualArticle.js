@@ -1,11 +1,12 @@
 export const postActualArticle = (req, res) => {
   try {
       const article = {
-        title: req.body.title,
-        body: req.body.body,
-        tags: req.body.tags,
+        articleTitle: req.body.articleTitle,
         author: req.body.author,
-        date : Date.now()
+        body: req.body.body,
+        date : Date.now(),
+        image: req.body.image,
+        tags: req.body.tags
       };
       res.json({
           data : article,

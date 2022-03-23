@@ -2,14 +2,16 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
 const bandSchema = new mongoose.Schema({
-    bandName : String,
-    musicians : Array,
-    style : Array,
-    website : String,
-    mail : String,
-    socialMedia : String,
+    approved : Boolean,
+    bandName : {type: String, required: true},
+    concerts: Array,
     image : String,
-    approved : Boolean
+    mail : String,
+    musicians : {type: Array, required: true},
+    socialMedia : Object,
+    style : Array,
+    vorsitzender: {type: String, required: true},
+    website : String
   })
 
   const Bands = mongoose.model("bands", bandSchema, "bands")

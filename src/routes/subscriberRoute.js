@@ -5,27 +5,19 @@ import Subscribers from "../models/subscriberSchema.js"
 import  Schema from "../models/musicianSchema.js"
 
 
-/* router.post("/", (req, res) => {
-  console.log(req.body)
-}) */
-
 router.post("/", async (req, res) => {
   const subscriber = {
-    fname : req.body.fname,
-    lname : req.body.lname,
-    email : req.body.email
-  /*   date : Date.now(),
-    approved : true */
+    fName : req.body.fName,
+    lName : req.body.lName,
+    mail : req.body.mail,
+    approved: false
   }
   
-  /* const newSubscriber = new Schema.Subscribers(subscriber) */
-
   try {
-    await Subscribers.create(subscriber)
+    await Subscribers.create(req.body)
   }
   catch(err){
     console.log(err)
-    /* res.end("NOT A NEW SUBSCRIBER, SORRY") */
   }
   
 })
@@ -41,17 +33,3 @@ router.get("/", async (req, res) => {
 });
 
 export default router;
-
-  /* const newSubscriber = new Schema.SubscribersModel(subscriber) */
-  
-/* 
-  const savedObj = await Model.create(obj);
-  res.json({
-    savedObj,
-  });
-
-   */
-/* const savedObj = await Model.create(obj);
-  res.json({
-    savedObj,
-  }); */

@@ -1,10 +1,10 @@
 export const postSubscriber = (req, res) => {
     try {
         const subscriber = {
-          fname: req.body.fname,
-          lname: req.body.lname,
-          email: req.body.email
-          /* approved: false */
+          fName: req.body.fName,
+          lName: req.body.lName,
+          mail: req.body.mail/* ,
+          approved: false */
         };
         res.json({
             data : subscriber,

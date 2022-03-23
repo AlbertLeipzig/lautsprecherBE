@@ -7,29 +7,30 @@ import  Schema from "../models/musicbusinessSchema.js"
 
 router.post("/add", async (req, res) => {
   const musicBusiness = {
-    businessName : "Test Business",
-    inhaber : "",
-    address: "",
-    PLZ : "",
-    phone : "",
-    mail : "",
-    website : "",
-    socialMedia : "",
-    presentation : "",
-    image : "",
+    businessName : req.body.businessName,
+    inhaber : req.body.inhaber,
+    address: req.body.address,
+    phone : req.body.phone,
+    mail : req.body.mail,
+    website : req.body.website,
+    socialMedia : {
+      fb: req.body.fb,
+      ig: req.body.ig,
+      tw: req.body.tw,
+      sc: req.body.sc,
+      yt: req.body.yt,
+      in: req.body.in,
+      twitch: req.body.twitch
+    },
+    image : req.body.image,
     approved : false
   }
-  const newMusicbusiness = new Schema.Musicbusiness(musicBusiness)
 
   try {
-    await newMusicbusiness.save( async (err, newMusicbusinessResult) => {
-      console.log("New Music Business In")
-      res.end("Yes, NEW MUSIC BUSINESS CREATED")
-    })
+    await Musicbusiness.create(req.body)
   }
   catch(err){
     console.log(err)
-    res.end("NOT A NEW MUSIC BUSINESS, SORRY")
   }
 })
 

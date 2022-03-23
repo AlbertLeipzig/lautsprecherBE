@@ -1,17 +1,15 @@
 import mongoose from "mongoose";
 
 const musicbusinessSchema = new mongoose.Schema({
-    businessName : String,
-    inhaber : String,
-    address: String,
-    PLZ : Number,
-    phone : Number,
-    mail : String,
-    website : String,
-    socialMedia : String,
-    presentation : String,
+    address: Object,
+    approved : {type: Boolean, required: true},
+    businessName : {type: String, required: true},
     image : String,
-    approved : Boolean
+    inhaber : { type: String, required: true},
+    mail : {type: String, required: true},
+    phone : Number,
+    socialMedia : Object,
+    website : String
   })
 
   const Musicbusiness = mongoose.model("musicBusiness", musicbusinessSchema, "musicBusiness")

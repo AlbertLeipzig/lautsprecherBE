@@ -7,28 +7,30 @@ import Schema from "../models/veranstaltungsortSchema.js"
 
 router.post("/add", async (req, res) => {
   const veranstaltungsort = {
-    placeName : "",
-    inhaber : "",
-    address: "",
-    website : "",
-    mail : "",
-    phone : "",
-    socialMedia : "",
-    image : "",
+    placeName : req.body.placeName,
+    inhaber : req.body.ID,
+    address: req.body.address,
+    website : req.body.website,
+    mail : req.body.mail,
+    phone : req.body.phone,
+    socialMedia : {
+      fb:req.body.fb,
+      tw:req.body.tw,
+      ig:req.body.ig,
+      sc:req.body.sc,
+      yt:req.body.yt,
+      twitch:req.body.twitch,
+      in:req.body.in
+    },
+    image : req.body.image,
     approved : false
   }
 
-  const newVeranstaltungsort = new Schema.Veranstaltungsort(veranstaltungsort)
-
   try {
-    await newVeranstaltungsort.save( async (err, newVeranstaltungsortResult) => {
-      console.log("New Veranstaltungsort In")
-      res.end("Yes, NEW VERANSTALTUNGSORT CREATED")
-    })
+    await Veranstaltungsort.create(req.body)
   }
   catch(err){
     console.log(err)
-    res.end("NOT A NEW VERANSTALTUNGSORT, SORRY")
   }
 })
 

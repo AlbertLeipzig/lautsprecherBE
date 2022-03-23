@@ -2,16 +2,17 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
 const concertSchema = new mongoose.Schema({
-    title : {type : String, required : true },
-    band : Array,
-    style: Array,
-    place : String,
-    time : String,
-    duration : String,
-    cost : Number,
-    tickets : String,
+    address: Object,
+    approved : {type: Boolean, required: true},
+    bands : Array,
+    concertTitle : {type : String, required : true },
+    cost : {type: Number, required: true},
+    date : {type: Object, required: true},
+    duration : Number,
     image : String,
-    approved : Boolean
+    musicians: Array,
+    style: {type: Array, required: true},
+    tickets : String
   })
 
   const Concerts = mongoose.model("concerts", concertSchema, "concerts")

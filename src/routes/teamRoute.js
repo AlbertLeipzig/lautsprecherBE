@@ -7,28 +7,21 @@ import  Schema from "../models/teamSchema.js"
 
 router.post("/", async (req, res) => {
   const member = {
-    fname : "",
-    lname : "",
-    position : "",
-    website : "wagner.de",
-    mail : "mail@wagner.de",
-    socialMedia : "",
-    image : "",
+    fName : req.body.fName,
+    lName : req.body.lName,
+    position : req.body.position,
+    website : req.body.website,
+    mail : req.body.mail,
+    socialMedia : req.body.socialMedia,
+    image : req.body.image,
     approved : false
   }
 
-  
-  const newMember = new Schema.TeamMember(member)
-
   try {
-    await newMember.save( async (err, newMemberResult) => {
-      console.log("New Member In")
-      res.end("Yes, NEW MEMBER CREATED")
-    })
+    await TeamMember.create(req.body)
   }
   catch(err){
     console.log(err)
-    res.end("NOT A NEW MEMBER, SORRY")
   }
 })
 
