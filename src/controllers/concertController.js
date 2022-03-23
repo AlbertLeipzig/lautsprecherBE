@@ -17,6 +17,7 @@ export const postConcert = (req, res) => {
         place: req.body.place,
         style: req.body.style,
         tickets: req.body.tickets,
+        veranstaltungsort: req.body.veranstaltungsort
       };
       res.json({
           data : concert,

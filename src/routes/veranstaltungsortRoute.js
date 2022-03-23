@@ -7,12 +7,16 @@ import Schema from "../models/veranstaltungsortSchema.js"
 
 router.post("/add", async (req, res) => {
   const veranstaltungsort = {
-    placeName : req.body.placeName,
+    approved : false,
+    street: req.body.street,
+    number: req.body.number,
+    PLZ: req.body.PLZ,
+    concerts: req.body.concerts,
+    image : req.body.image,
     inhaber : req.body.ID,
-    address: req.body.address,
-    website : req.body.website,
     mail : req.body.mail,
     phone : req.body.phone,
+    placeName : req.body.placeName,
     socialMedia : {
       fb:req.body.fb,
       tw:req.body.tw,
@@ -22,9 +26,10 @@ router.post("/add", async (req, res) => {
       twitch:req.body.twitch,
       in:req.body.in
     },
-    image : req.body.image,
-    approved : false
+    website : req.body.website
   }
+
+  const newVeranstaltungsort = new Schema.Veranstaltungsort(veranstaltungsort)
 
   try {
     await Veranstaltungsort.create(req.body)

@@ -1,16 +1,17 @@
 import mongoose from "mongoose";
 
 const concertSchema = new mongoose.Schema({
-    title : String,
-    band : Array,
-    musician: Array,
-    place : String,
-    time : String,
-    duration : Number,
-    cost : Number,
-    tickets : String,
-    image : String,
-    approved : Boolean
+  approved : Boolean,
+  band : Array,
+  cost : Number,
+  duration : Number,
+  image : String,
+  musician: Array,
+  place : String,
+  tickets : String,
+  time : String,
+  title : String,
+  veranstaltungsort: String
   })
 
   export default concertSchema

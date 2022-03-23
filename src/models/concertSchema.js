@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
 const concertSchema = new mongoose.Schema({
+    veranstaltungsort: String,
     address: Object,
     approved : {type: Boolean, required: true},
     bands : Array,

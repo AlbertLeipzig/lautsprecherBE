@@ -7,7 +7,7 @@ import Schema from "../models/historyArticleSchema.js"
 
 router.post("/add", async (req, res) => {
   const article = {
-    title : req.body.title,
+    articleTitle : req.body.articleTitle,
     author : req.body.author,
     date : Date.now(),
     tags : req.body.tags,
@@ -15,6 +15,8 @@ router.post("/add", async (req, res) => {
     image : req.body.image,
     approved : true
   }
+
+  const newHistoryArticle = new Schema.HistoryArticle(article)
 
   try {
     await HistoryArticle.create(req.body)

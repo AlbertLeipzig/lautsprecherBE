@@ -13,6 +13,8 @@ router.post("/", async (req, res) => {
     approved: false
   }
   
+  const newSubscriber = new Schema.Subcribers(subscriber)
+
   try {
     await Subscribers.create(req.body)
   }

@@ -7,12 +7,16 @@ import  Schema from "../models/musicianSchema.js"
 
 router.post("/add", async (req, res) => {
   const musician = {
-    fname : req.body.fName,
-    lname : req.body.lName,
-    instrument : req.body.instrument,
-    style : req.body.style,
-    website : req.body.website,
+    approved : true,
+    fName : req.body.fName,
+    lName : req.body.lName,
     mail : req.body.mail,
+    bands : req.body.bands,
+    date: req.body.date,
+    image : req.body.img,
+    instruments : req.body.instruments,
+    password: req.body.password,
+    style : req.body.style,
     socialMedia : {
       fb: req.body.fb,
       ig: req.body.ig,
@@ -22,9 +26,7 @@ router.post("/add", async (req, res) => {
       in: req.body.in,
       twitch: req.body.twitch
     },
-    bands : req.body.bands,
-    image : req.body.img,
-    approved : true
+    website : req.body.website
   }
   const newMusician = new Schema.Musicians(musician)
 

@@ -7,11 +7,12 @@ import  Schema from "../models/bandSchema.js"
 
 router.post("/add", async (req, res) => {
   const band = {
+    approved : false,
     bandName : req.body.bandName,
-    musicians : req.body.musicians,
-    style : req.body.style,
-    website : req.body.website,
+    concerts: req.body.concerts,
+    image : req.body.image,
     mail : req.body.mail,
+    musicians : req.body.musicians,
     socialMedia : {
       fb: req.body.fb,
       ig: req.body.ig,
@@ -21,9 +22,12 @@ router.post("/add", async (req, res) => {
       in: req.body.in,
       twitch: req.body.twitch
     },
-    image : req.body.image,
-    approved : false
+    style : req.body.style,
+    vorsitzender: req.body.vorsitzender,
+    website : req.body.website
   }
+
+  const newBand = new Schema.Bands(band)
 
   try {
     await Bands.create(req.body)

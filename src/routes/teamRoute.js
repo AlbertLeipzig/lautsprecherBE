@@ -9,13 +9,23 @@ router.post("/", async (req, res) => {
   const member = {
     fName : req.body.fName,
     lName : req.body.lName,
-    position : req.body.position,
-    website : req.body.website,
     mail : req.body.mail,
-    socialMedia : req.body.socialMedia,
     image : req.body.image,
+    password: req.body.password,
+    phone: req.body.phone,
+    role : req.body.role,
+    website : req.body.website,
+    fb: req.body.fb,
+    ig: req.body.ig,
+    tw: req.body.tw,
+    sc: req.body.sc,
+    yt: req.body.yt,
+    in: req.body.in,
+    twitch: req.body.twitch,
     approved : false
   }
+
+  const newTeamMember = new Schema.TeamMember(member)
 
   try {
     await TeamMember.create(req.body)

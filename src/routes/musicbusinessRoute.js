@@ -7,12 +7,15 @@ import  Schema from "../models/musicbusinessSchema.js"
 
 router.post("/add", async (req, res) => {
   const musicBusiness = {
-    businessName : req.body.businessName,
+    number: req.body.number,
+    PLZ: req.body.PLZ,
+    stree: req.body.street,
+    approved : false,
+    image : req.body.image,
     inhaber : req.body.inhaber,
-    address: req.body.address,
-    phone : req.body.phone,
     mail : req.body.mail,
-    website : req.body.website,
+    businessName : req.body.businessName,
+    phone : req.body.phone,
     socialMedia : {
       fb: req.body.fb,
       ig: req.body.ig,
@@ -22,9 +25,10 @@ router.post("/add", async (req, res) => {
       in: req.body.in,
       twitch: req.body.twitch
     },
-    image : req.body.image,
-    approved : false
+    website : req.body.website
   }
+
+  const newMusicbusiness = new Schema.Musicbusiness(musicBusiness)
 
   try {
     await Musicbusiness.create(req.body)
