@@ -1,64 +1,38 @@
 import express from "express";
 const router = express.Router();
 import {postSubscriber} from "../controllers/subscriberController.js"
-import SubscribersModel from "../models/subscriberSchema.js";
+import Subscribers from "../models/subscriberSchema.js"
+import  Schema from "../models/musicianSchema.js"
 
+
+/* router.post("/", (req, res) => {
+  console.log(req.body)
+}) */
 
 router.post("/", async (req, res) => {
-  const subscribers = await SubscribersModel.find()
-  console.log(subscribers.length)
+  const subscriber = {
+    fname : req.body.fname,
+    lname : req.body.lname,
+    email : req.body.email
+  /*   date : Date.now(),
+    approved : true */
+  }
   
-  const subscriber = req.body
+  /* const newSubscriber = new Schema.Subscribers(subscriber) */
 
-  console.log(subscriber)
-  
-  /* const newSubscriber = new Schema.SubscribersModel(subscriber) */
-
-/* 
-  const savedObj = await Model.create(obj);
-  res.json({
-    savedObj,
-  });
-
-  obj = object dass du von Frontend bekommst
-marca_de_verificación_blanca
-ojos
-manos_levantadas
-
-
-
-
-
-16:01
-versuch mal mit save und create (moongosse Methods)
-16:01
-Model = dein Model
-
-   */
   try {
-    async (err, newSubscriberResult) => {
-      subscriber.save()
-      console.log("New Subscriber In")
-      res.end("Yes, NEW SUBSCRIBER CREATED")
-    }
+    await Subscribers.create(subscriber)
   }
   catch(err){
     console.log(err)
-    res.end("NOT A NEW SUBSCRIBER, SORRY")
-    console.log(err)
+    /* res.end("NOT A NEW SUBSCRIBER, SORRY") */
   }
+  
 })
-
-
-
-
-
-
-
 
 router.get("/", async (req, res) => {
   try {
-    const subscribers = await Subscriber.find()
+    const subscribers = await Subscribers.find()
     res.json(subscribers)
   }
   catch (err) {
@@ -67,3 +41,17 @@ router.get("/", async (req, res) => {
 });
 
 export default router;
+
+  /* const newSubscriber = new Schema.SubscribersModel(subscriber) */
+  
+/* 
+  const savedObj = await Model.create(obj);
+  res.json({
+    savedObj,
+  });
+
+   */
+/* const savedObj = await Model.create(obj);
+  res.json({
+    savedObj,
+  }); */

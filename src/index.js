@@ -4,6 +4,7 @@ import "./db-connect.js";
 import morgan from "morgan";
 import express from "express";
 import cors from "cors";
+import bodyParser from "body-parser"
 
 import actualArticleRoute from "./routes/actualArticleRoute.js";
 import historyArticleRoute from "./routes/historyArticleRoute.js";
@@ -30,10 +31,15 @@ console.log(process.env.FRONTEND)
 app.use(morgan("tiny"))
 /* body parser */
 app.use(express.json())
+app.use(bodyParser.json())
 
 app.get("/", (req, res) => {
     res.send("hi there")
 })
+
+app.use("/post", () => {
+    console.log("hello")
+  })
 
 app.use("/api/actualarticle", actualArticleRoute)
 app.use("/api/historyarticle", historyArticleRoute)
