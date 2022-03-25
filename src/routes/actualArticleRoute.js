@@ -5,24 +5,23 @@ import ActualArticles from "../models/actualArticleSchema.js"
 import Schema from "../models/actualArticleSchema.js"
 
 
-router.post("/add", async (req, res) => {
+router.post("/", async (req, res) => {
   const article = {
+    approved : true,
     articleTitle : req.body.articleTitle,
     author : req.body.author,
-    date : Date.now(),
-    tags : req.body.tags,
     body : req.body.body,
     image : req.body.image,
-    approved : true
+    tags : req.body.tags
   }
 
-  const newArticle = new Schema.ActualArticles(article)
-
   try {
-    await ActualArticles.create(req.body)
+    const newArticle = await ActualArticles.create(article)
+    res.status(201).json(newArticle)
   }
   catch(err){
     console.log(err)
+    res.sendStatus(400)
   }
 })
 

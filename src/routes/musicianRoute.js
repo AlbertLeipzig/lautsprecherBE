@@ -12,7 +12,6 @@ router.post("/add", async (req, res) => {
     lName : req.body.lName,
     mail : req.body.mail,
     bands : req.body.bands,
-    date: req.body.date,
     image : req.body.img,
     instruments : req.body.instruments,
     password: req.body.password,
@@ -28,13 +27,14 @@ router.post("/add", async (req, res) => {
     },
     website : req.body.website
   }
-  const newMusician = new Schema.Musicians(musician)
 
   try {
-    await newMusician.create(req.body)
+    const newMusician = await Musician.create(musician)
+    res.status(201).json(newMusician)
   }
   catch(err){
     console.log(err)
+    res.sendStatus(400)
   }
 })
 

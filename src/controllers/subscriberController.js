@@ -3,8 +3,8 @@ export const postSubscriber = (req, res) => {
         const subscriber = {
           fName: req.body.fName,
           lName: req.body.lName,
-          mail: req.body.mail/* ,
-          approved: false */
+          mail: req.body.mail,
+          approved: false
         };
         res.json({
             data : subscriber,

@@ -5,7 +5,7 @@ import Bands from "../models/bandSchema.js"
 import  Schema from "../models/bandSchema.js"
 
 
-router.post("/add", async (req, res) => {
+router.post("/", async (req, res) => {
   const band = {
     approved : false,
     bandName : req.body.bandName,
@@ -27,13 +27,13 @@ router.post("/add", async (req, res) => {
     website : req.body.website
   }
 
-  const newBand = new Schema.Bands(band)
-
   try {
-    await Bands.create(req.body)
+    const newBand = await Bands.create(band)
+    res.status(201).json(newBand)
   }
   catch(err){
     console.log(err)
+    res.sendStatus(400)
   }
 })
 

@@ -12,7 +12,10 @@ const bandSchema = new mongoose.Schema({
     style : Array,
     vorsitzender: {type: String, required: true},
     website : String
-  })
+  }, {
+    versionKey: false,
+     timestamps: true
+   }, {collection:"bands"})
 
   const Bands = mongoose.model("bands", bandSchema, "bands")
 

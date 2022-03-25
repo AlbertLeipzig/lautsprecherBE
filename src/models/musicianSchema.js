@@ -1,20 +1,23 @@
 import mongoose from "mongoose";
+/* import {Mixed} from "mongoose" */
 const Schema = mongoose.Schema
 
 const musicianSchema = new mongoose.Schema({
+    approved : {type: Boolean, required: true},
     fName : {type : String, required : true },
-    lname : {type: String, required: true},
+    lName : {type: String, required: true},
     mail : {type: String, required: true},
     bands : Array,
-    date: Object,
     image : String,
     instruments: Array,
     password: {type: String, required: true},
     style : Array,
     website : String,
     socialMedia : Object,
-    approved : {type: Boolean, required: true}
-  })
+  }, {
+    versionKey: false,
+     timestamps: true
+   }, {collection:"musicians"})
 
   const Musicians = mongoose.model("musicians", musicianSchema, "musicians")
 

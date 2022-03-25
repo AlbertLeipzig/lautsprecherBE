@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import {postHistoryArticle} from "../controllers/postHistoryArticle.js"
-import HistoryArticles from "../models/historyArticleSchema.js"
+import HistoryArticle from "../models/historyArticleSchema.js"
 import Schema from "../models/historyArticleSchema.js"
 
 
@@ -16,19 +16,19 @@ router.post("/add", async (req, res) => {
     approved : true
   }
 
-  const newHistoryArticle = new Schema.HistoryArticle(article)
-
   try {
-    await HistoryArticle.create(req.body)
+    const newArticle = await HistoryArticle.create(article)
+    res.status(201).json(newArticle)
   }
   catch(err){
     console.log(err)
+    res.sendStatus(400)
   }
 })
 
 router.get("/", async (req, res) => {
   try {
-    const articles = await HistoryArticles.find()
+    const articles = await HistoryArticle.find()
     res.json(articles)
   }
   catch (err) {

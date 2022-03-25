@@ -20,7 +20,7 @@ export const postMusician = (req, res) => {
             in: req.body.in,
             twitch: req.body.twitch
           },
-          website: req.body.website,
+          webswite: req.body.website,
         };
         res.json({
             data : musician,

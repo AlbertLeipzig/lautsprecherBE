@@ -1,4 +1,5 @@
 export const postConcert = (req, res) => {
+
   try {
       const concert = {
         approved: false,
@@ -19,10 +20,12 @@ export const postConcert = (req, res) => {
         tickets: req.body.tickets,
         veranstaltungsort: req.body.veranstaltungsort
       };
-      res.json({
+
+      if (musicians.length + bands.length > 0)(
+        res.json({
           data : concert,
           message : "success"
-      })
+        }))
     } catch (err) {
       console.log(err);
       res.json({

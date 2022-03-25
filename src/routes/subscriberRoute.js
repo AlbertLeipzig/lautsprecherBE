@@ -13,13 +13,13 @@ router.post("/", async (req, res) => {
     approved: false
   }
   
-  const newSubscriber = new Schema.Subcribers(subscriber)
-
   try {
-    await Subscribers.create(req.body)
+    const newSubscriber = await Subscribers.create(subscriber)
+    res.status(201).json(newSubscriber)
   }
   catch(err){
     console.log(err)
+    res.sendStatus(400)
   }
   
 })

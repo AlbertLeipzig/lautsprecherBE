@@ -7,11 +7,12 @@ import Schema from "../models/concertSchema.js"
 
 router.post("/add", async (req, res) => {
   const concert = {
-    veranstaltungsort: req.body.veranstaltungsort,
-    number: req.body.number,
-    PLZ: req.body.PLZ,
-    street: req.body.street,
     approved : true,
+    address: {
+      number: req.body.number,
+      PLZ: req.body.PLZ,
+      street: req.body.street,
+    },
     bands : req.body.bands,
     concertTitle : req.body.concertTitle,
     cost : req.body.cost,
@@ -20,16 +21,17 @@ router.post("/add", async (req, res) => {
     image : req.body.image,
     musicians : req.body.musicians,
     style : req.body.style,
-    tickets: req.body.tickets
+    tickets: req.body.tickets,
+    veranstaltungsort: req.body.veranstaltungsort,
   }
 
-  const newConcert = new Schema.Concerts(concert)
-
   try {
-    await Concerts.create(req.body)
+    const newConcert = await Concerts.create(concert)
+    res.status(201).json(newConcert)
   }
   catch(err){
     console.log(err)
+    res.sendStatus(400)
   }
 })
 

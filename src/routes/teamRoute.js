@@ -1,4 +1,5 @@
 import express from "express";
+import { RGB_S3TC_DXT1_Format } from "three";
 const router = express.Router();
 import {postTeamMember} from "../controllers/teamController.js"
 import TeamMember from "../models/teamSchema.js"
@@ -25,13 +26,13 @@ router.post("/", async (req, res) => {
     approved : false
   }
 
-  const newTeamMember = new Schema.TeamMember(member)
-
   try {
-    await TeamMember.create(req.body)
+    const newTeamMember = await TeamMember.create(member)
+    res.status(201).json(newTeamMember)
   }
   catch(err){
     console.log(err)
+    res.sendStatus(400)
   }
 })
 

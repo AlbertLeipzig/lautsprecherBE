@@ -11,7 +11,10 @@ const teamSchema = new mongoose.Schema({
     role: {type: String, required: true},
     socialMedia : Object,
     website : String
-  })
+  }, {
+    versionKey: false,
+     timestamps: true
+   }, {collection:"team"})
 
   const TeamMember = mongoose.model("team", teamSchema, "team")
 

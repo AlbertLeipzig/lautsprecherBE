@@ -8,9 +8,11 @@ import Schema from "../models/veranstaltungsortSchema.js"
 router.post("/add", async (req, res) => {
   const veranstaltungsort = {
     approved : false,
-    street: req.body.street,
-    number: req.body.number,
-    PLZ: req.body.PLZ,
+    address: {
+      street: req.body.street,
+      number: req.body.number,
+      PLZ: req.body.PLZ,
+    },
     concerts: req.body.concerts,
     image : req.body.image,
     inhaber : req.body.ID,
@@ -29,13 +31,13 @@ router.post("/add", async (req, res) => {
     website : req.body.website
   }
 
-  const newVeranstaltungsort = new Schema.Veranstaltungsort(veranstaltungsort)
-
   try {
-    await Veranstaltungsort.create(req.body)
+    const newVeranstaltungsort = await Veranstaltungsort.create(veranstaltungsort)
+    res.status(201).json(newVeranstaltungsort)
   }
   catch(err){
     console.log(err)
+    res.sendStatus(400)
   }
 })
 

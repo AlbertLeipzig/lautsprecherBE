@@ -7,6 +7,7 @@ export const postTeamMember = (req, res) => {
           mail: req.body.mail,
           image: req.body.image,
           password: req.body.password,
+          phone: req.body.phone,
           role: req.body.role,
           socialMedia: {
             fb: req.body.fb,
@@ -17,7 +18,7 @@ export const postTeamMember = (req, res) => {
             in: req.body.in,
             twitch: req.body.twitch
           },
-          website: req.body.website,
+          website: req.body.website
         };
         res.json({
             data : teamMember,

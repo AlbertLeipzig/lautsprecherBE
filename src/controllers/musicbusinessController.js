@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 export const postMusicbusiness = (req, res) => {
     try {
         const musicbusiness = {
@@ -8,7 +10,7 @@ export const postMusicbusiness = (req, res) => {
           },
           approved: false,
           image: req.body.image,
-          inhaber: req.body.inhaber,
+          inhaber: {type: mongoose.Schema.Types.ObjectId, ref: "subscriberSchema"},
           mail: req.body.mail,
           businessName: req.body.businessName,
           phone: req.body.phone,

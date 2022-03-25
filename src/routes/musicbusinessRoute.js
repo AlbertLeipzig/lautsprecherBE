@@ -1,22 +1,23 @@
 import express from "express";
 const router = express.Router();
-import {postMusicbusiness} from "../controllers/musicbusinessController.js"
-import Musicbusiness from "../models/musicbusinessSchema.js"
-import  Schema from "../models/musicbusinessSchema.js"
-
+import { postMusicbusiness } from "../controllers/musicbusinessController.js";
+import Musicbusiness from "../models/musicbusinessSchema.js";
+import Schema from "../models/musicbusinessSchema.js";
 
 router.post("/add", async (req, res) => {
   const musicBusiness = {
-    number: req.body.number,
-    PLZ: req.body.PLZ,
-    stree: req.body.street,
-    approved : false,
-    image : req.body.image,
-    inhaber : req.body.inhaber,
-    mail : req.body.mail,
-    businessName : req.body.businessName,
-    phone : req.body.phone,
-    socialMedia : {
+    address: {
+      number: req.body.number,
+      PLZ: req.body.PLZ,
+      street: req.body.street,
+    },
+    approved: false,
+    businessName: req.body.businessName,
+    image: req.body.image,
+    inhaber: req.body.inhaber,
+    mail: req.body.mail,
+    phone: req.body.phone,
+    socialMedia: {
       fb: req.body.fb,
       ig: req.body.ig,
       tw: req.body.tw,
@@ -25,26 +26,24 @@ router.post("/add", async (req, res) => {
       in: req.body.in,
       twitch: req.body.twitch
     },
-    website : req.body.website
-  }
-
-  const newMusicbusiness = new Schema.Musicbusiness(musicBusiness)
+    website: req.body.website,
+  };
 
   try {
-    await Musicbusiness.create(req.body)
+    const newMusicbusiness = await Musicbusiness.create(musicBusiness);
+    res.status(201).json(newMusicbusiness)
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400)
   }
-  catch(err){
-    console.log(err)
-  }
-})
+});
 
 router.get("/", async (req, res) => {
   try {
-    const musicbusiness = await Musicbusiness.find()
-    res.json(musicbusiness)
-  }
-  catch (err) {
-    res.json({ message : err.message })
+    const musicbusiness = await Musicbusiness.find();
+    res.json(musicbusiness);
+  } catch (err) {
+    res.json({ message: err.message });
   }
 });
 
