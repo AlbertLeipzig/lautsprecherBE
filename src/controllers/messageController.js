@@ -1,15 +1,14 @@
-import read from "body-parser/lib/read";
-
-export const message = (req, res) => {
+export const postMessage = (req, res) => {
   try {
     const message = {
-      author: req.body.author,
-      date: Date.now(),
-      messageBody: req.body.messageBody,
-      messageTitle: req.body.messageTitle
+      fName: req.body.fName,
+      lName: req.body.lName,
+      mail: req.body.mail,
+      messageTitle: req.body.messageTitle,
+      messageBody: req.body.messageBody
     };
     res.json({
-      data: band,
+      data: message,
       message: "success",
     });
   } catch (err) {

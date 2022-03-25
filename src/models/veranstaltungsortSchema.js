@@ -15,7 +15,7 @@ const veranstaltungsortSchema = new mongoose.Schema({
   }, {
     versionKey: false,
      timestamps: true
-   }, {collection:"veranstaltungsort"})
+   }, {collection:"places"})
 
   const Veranstaltungsort = mongoose.model("places", veranstaltungsortSchema, "places")
 

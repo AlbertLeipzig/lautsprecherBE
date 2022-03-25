@@ -15,6 +15,7 @@ import musicbusinessRoute from "./routes/musicbusinessRoute.js";
 import teamRoute from "./routes/teamRoute.js";
 import veranstaltungsortRoute from "./routes/veranstaltungsortRoute.js";
 import subscriberRoute from "./routes/subscriberRoute.js";
+import messageRoute from "./routes/messageRoute.js";
 
 const app = express()
 
@@ -27,7 +28,6 @@ app.use(cors({
     credentials: true
 }))
 
-console.log(process.env.FRONTEND)
 app.use(morgan("tiny"))
 /* body parser */
 app.use(express.json())
@@ -37,9 +37,6 @@ app.get("/", (req, res) => {
     res.send("hi there")
 })
 
-app.use("/post", () => {
-    console.log("hello")
-  })
 
 app.use("/api/actualarticle", actualArticleRoute)
 app.use("/api/historyarticle", historyArticleRoute)
@@ -50,6 +47,7 @@ app.use("/api/veranstaltungsort", veranstaltungsortRoute)
 app.use("/api/musicbusiness", musicbusinessRoute)
 app.use("/api/team", teamRoute)
 app.use("/api/subscribers", subscriberRoute)
+app.use("/api/messages", messageRoute)
 
 
 app.listen(PORT, () => {
@@ -62,18 +60,5 @@ app.listen(PORT, () => {
     console.log(`VERANSTALTUNGSORT:http://localhost:${PORT}/api/veranstaltungsort`)
     console.log(`MUSICBUSINESS: http://localhost:${PORT}/api/musicbusiness`)
     console.log(`TEAM: http://localhost:${PORT}/api/team`)
+    console.log(`TEAM: http://localhost:${PORT}/api/messages`)
 })
-
-/* 
-.then (() => {
-    console.log(`db connected on port ${PORT}`)
-})
-.catch( (err) => console.log(err))
-*/
-
-/* 
-.then(result => {
-    
-    app.listen(PORT, () => console.log(MENSAJE))
-})
-.catch( err => console.log(err)) */

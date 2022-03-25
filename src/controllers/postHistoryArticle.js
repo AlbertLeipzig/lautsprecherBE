@@ -5,7 +5,6 @@ export const postHistoryArticle = (req, res) => {
         articleTitle: req.body.articleTitle,
         author: req.body.author,
         body: req.body.body,
-        date : Date.now(),
         image: req.body.image,
         tags: req.body.tags
       };

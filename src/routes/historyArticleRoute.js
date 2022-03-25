@@ -5,7 +5,7 @@ import HistoryArticle from "../models/historyArticleSchema.js"
 import Schema from "../models/historyArticleSchema.js"
 
 
-router.post("/add", async (req, res) => {
+router.post("/", async (req, res) => {
   const article = {
     articleTitle : req.body.articleTitle,
     author : req.body.author,

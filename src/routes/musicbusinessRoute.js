@@ -4,7 +4,7 @@ import { postMusicbusiness } from "../controllers/musicbusinessController.js";
 import Musicbusiness from "../models/musicbusinessSchema.js";
 import Schema from "../models/musicbusinessSchema.js";
 
-router.post("/add", async (req, res) => {
+router.post("/", async (req, res) => {
   const musicBusiness = {
     address: {
       number: req.body.number,
@@ -34,7 +34,7 @@ router.post("/add", async (req, res) => {
     res.status(201).json(newMusicbusiness)
   } catch (err) {
     console.log(err);
-    res.sendStatus(400)
+    res.sendStatus(400).json(err)
   }
 });
 

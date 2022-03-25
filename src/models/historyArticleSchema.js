@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
 const historyArticleSchema = new mongoose.Schema({
-    title : { type: String, required: true},
-    body : {type: String, required: true},
-    author: {type: Array, required: true},
-    tags : Array,
-    image : String,
-    approved : {type: Boolean, required: true}
+    approved : {type: Boolean, required: true},
+    articleTitle : { type: String, required: true},
+    author: {type: String, required: true},
+    body : {type: Array, required: true},
+    image : Array,
+    tags : Array
   }, {
     versionKey: false,
      timestamps: true

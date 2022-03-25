@@ -5,16 +5,15 @@ import Musicians from "../models/musicianSchema.js"
 import  Schema from "../models/musicianSchema.js"
 
 
-router.post("/add", async (req, res) => {
+router.post("/", async (req, res) => {
   const musician = {
     approved : true,
     fName : req.body.fName,
     lName : req.body.lName,
     mail : req.body.mail,
     bands : req.body.bands,
-    image : req.body.img,
+    image : req.body.image,
     instruments : req.body.instruments,
-    password: req.body.password,
     style : req.body.style,
     socialMedia : {
       fb: req.body.fb,
@@ -29,12 +28,12 @@ router.post("/add", async (req, res) => {
   }
 
   try {
-    const newMusician = await Musician.create(musician)
+    const newMusician = await Musicians.create(musician)
     res.status(201).json(newMusician)
   }
   catch(err){
     console.log(err)
-    res.sendStatus(400)
+    res.status(400).json(err)
   }
 })
 

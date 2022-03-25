@@ -15,12 +15,12 @@ export const postConcert = (req, res) => {
         duration: req.body.duration,
         image: req.body.image,
         musicians: req.body.musicians,
-        place: req.body.place,
         style: req.body.style,
         tickets: req.body.tickets,
         veranstaltungsort: req.body.veranstaltungsort
       };
 
+      /* ist musicians || bands deffiniert */
       if (musicians.length + bands.length > 0)(
         res.json({
           data : concert,

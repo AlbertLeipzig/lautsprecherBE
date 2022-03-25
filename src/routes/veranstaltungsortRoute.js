@@ -5,7 +5,7 @@ import Veranstaltungsort from "../models/veranstaltungsortSchema.js"
 import Schema from "../models/veranstaltungsortSchema.js"
 
 
-router.post("/add", async (req, res) => {
+router.post("/", async (req, res) => {
   const veranstaltungsort = {
     approved : false,
     address: {
@@ -15,7 +15,7 @@ router.post("/add", async (req, res) => {
     },
     concerts: req.body.concerts,
     image : req.body.image,
-    inhaber : req.body.ID,
+    inhaber : req.body.inhaber,
     mail : req.body.mail,
     phone : req.body.phone,
     placeName : req.body.placeName,

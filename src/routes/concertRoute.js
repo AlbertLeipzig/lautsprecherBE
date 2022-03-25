@@ -5,7 +5,7 @@ import Concerts from "../models/concertSchema.js"
 import Schema from "../models/concertSchema.js"
 
 
-router.post("/add", async (req, res) => {
+router.post("/", async (req, res) => {
   const concert = {
     approved : true,
     address: {

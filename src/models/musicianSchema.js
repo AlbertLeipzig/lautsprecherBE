@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-/* import {Mixed} from "mongoose" */
 const Schema = mongoose.Schema
 
 const musicianSchema = new mongoose.Schema({
@@ -10,7 +9,6 @@ const musicianSchema = new mongoose.Schema({
     bands : Array,
     image : String,
     instruments: Array,
-    password: {type: String, required: true},
     style : Array,
     website : String,
     socialMedia : Object,
