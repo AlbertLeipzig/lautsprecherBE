@@ -33,20 +33,17 @@ app.use(morgan("tiny"))
 app.use(express.json())
 app.use(bodyParser.json())
 
-app.get("/", (req, res) => {
-    res.send("hi there")
-})
-
 
 app.use("/api/actualarticle", actualArticleRoute)
 app.use("/api/historyarticle", historyArticleRoute)
+app.use("/api/subscribers", subscriberRoute)
+
 app.use("/api/musician", musicianRoute)
 app.use("/api/band", bandRoute)
 app.use("/api/concert", concertRoute)
 app.use("/api/veranstaltungsort", veranstaltungsortRoute)
 app.use("/api/musicbusiness", musicbusinessRoute)
 app.use("/api/team", teamRoute)
-app.use("/api/subscribers", subscriberRoute)
 app.use("/api/messages", messageRoute)
 
 
