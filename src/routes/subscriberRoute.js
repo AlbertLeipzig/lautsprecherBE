@@ -34,4 +34,18 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+
+  const id = req.params.id
+
+  try {
+    const subscribers = await Subscribers.findOne({_id : id})
+    res.json(subscribers)
+    console.log(`You wanted the id ${id}`)
+  }
+  catch (err) {
+    res.json({ message : err.message })
+  }
+});
+
 export default router;
