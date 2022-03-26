@@ -74,4 +74,32 @@ router.delete("/:id", async (req, res) => {
   res.redirect("/")
 });
 
+
+
+router.patch("/:id", async (req, res) => {
+
+  const id = req.params.id
+
+  try{
+    const veranstaltungsort = await Veranstaltungsort.findById(id)
+    veranstaltungsort.approved = req.body.approved || false
+    veranstaltungsort.address = req.body.address || veranstaltungsort.address
+    veranstaltungsort.concerts = req.body.concerts || veranstaltungsort.concerts
+    veranstaltungsort.image = req.body.image || veranstaltungsort.image
+    veranstaltungsort.inhaber = req.body.inhaber || veranstaltungsort.inhaber
+    veranstaltungsort.mail = req.body.mail || veranstaltungsort.mail
+    veranstaltungsort.phone = req.body.phone || veranstaltungsort.phone
+    veranstaltungsort.placeName = req.body.placeName || veranstaltungsort.placeName
+    veranstaltungsort.socialMedia = req.body.socialMedia || veranstaltungsort.socialMedia
+    veranstaltungsort.website = req.body.website || veranstaltungsort.website
+
+    const updatedveranstaltungsort = await veranstaltungsort.save()
+    res.json(updatedveranstaltungsort)
+  }
+  catch(err){
+    res.status(400).send(err)
+  }
+});
+
+
 export default router;

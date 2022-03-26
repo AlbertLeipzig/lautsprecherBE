@@ -56,4 +56,23 @@ router.delete("/:id", async (req, res) => {
   res.redirect("/")
 });
 
+router.patch("/:id", async (req, res) => {
+
+  const id = req.params.id
+
+  try{
+    const subscriber = await Subscribers.findById(id)
+    subscriber.approved = req.body.approved || false
+    subscriber.fName = req.body.fName || Subscribers.fName
+    subscriber.lName = req.body.lName || Subscribers.lName
+    subscriber.mail = req.body.mail || Subscribers.mail
+
+    const updatedsubscriber = await subscriber.save()
+    res.json(updatedsubscriber)
+  }
+  catch(err){
+    res.status(400).send(err)
+  }
+});
+
 export default router;

@@ -37,7 +37,6 @@ app.use(bodyParser.json())
 app.use("/api/actualarticle", actualArticleRoute)
 app.use("/api/historyarticle", historyArticleRoute)
 app.use("/api/subscribers", subscriberRoute)
-
 app.use("/api/musician", musicianRoute)
 app.use("/api/band", bandRoute)
 app.use("/api/concert", concertRoute)

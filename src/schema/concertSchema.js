@@ -10,7 +10,7 @@ const concertSchema = new mongoose.Schema({
   place : String,
   tickets : String,
   time : String,
-  title : String,
+  concertTitle : String,
   veranstaltungsort: String
   })
 

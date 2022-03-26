@@ -69,4 +69,29 @@ router.delete("/:id", async (req, res) => {
   res.redirect("/")
 });
 
+router.patch("/:id", async (req, res) => {
+
+  const id = req.params.id
+
+  try{
+    const musicBusiness = await Musicbusiness.findById(id)
+    
+    musicBusiness.address = req.body.address || Musicbusiness.address
+    musicBusiness.approved = req.body.approved || false
+    musicBusiness.businessName = req.body.businessName || musicBusiness.businessName
+    musicBusiness.image = req.body.image || musicBusiness.image
+    musicBusiness.inhaber = req.body.inhaber || musicBusiness.inhaber
+    musicBusiness.mail = req.body.mail || musicBusiness.mail
+    musicBusiness.phone = req.body.phone || musicBusiness.phone
+    musicBusiness.socialMedia = req.body.socialMedia || musicBusiness.socialMedia
+    musicBusiness.website = req.body.website || musicBusiness.website
+
+    const updatedmusicBusiness = await musicBusiness.save()
+    res.json(updatedmusicBusiness)
+  }
+  catch(err){
+    res.status(400).send(err)
+  }
+});
+
 export default router;

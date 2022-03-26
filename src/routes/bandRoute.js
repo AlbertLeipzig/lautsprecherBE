@@ -70,4 +70,30 @@ router.delete("/:id", async (req, res) => {
   res.redirect("/")
 });
 
+
+router.patch("/:id", async (req, res) => {
+
+  const id = req.params.id
+
+  try{
+    const band = await Bands.findById(id)
+    band.approved = req.body.approved || false
+    band.bandName = req.body.articleTitle || band.bandName
+    band.concerts = req.body.author || band.concerts
+    band.image = req.body.image || band.image
+    band.mail = req.body.body || band.mail
+    band.musicians = req.body.tags || band.musicians
+    band.socialMedia = req.body.tags || band.socialMedia
+    band.style = req.body.tags || band.style
+    band.vorsitzender = req.body.tags || band.vorsitzender
+    band.website = req.body.tags || band.website
+
+    const updatedBand = await band.save()
+    res.json(updatedBand)
+  }
+  catch(err){
+    res.status(400).send(err)
+  }
+});
+
 export default router;

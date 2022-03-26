@@ -68,4 +68,29 @@ router.delete("/:id", async (req, res) => {
   res.redirect("/")
 });
 
+router.patch("/:id", async (req, res) => {
+
+  const id = req.params.id
+
+  try{
+    const teamMember = await TeamMember.findById(id)
+    teamMember.approved = req.body.approved || false
+    teamMember.fName = req.body.fName || TeamMember.fName
+    teamMember.lName = req.body.lName || TeamMember.lName
+    teamMember.mail = req.body.mail || TeamMember.mail
+    teamMember.image = req.body.image || teamMember.image
+    teamMember.password = req.body.password || teamMember.password
+    teamMember.phone = req.body.phone || teamMember.phone
+    teamMember.role = req.body.role || teamMember.role
+    teamMember.socialMedia = req.body.socialMedia || teamMember.socialMedia
+    teamMember.website = req.body.website || teamMember.website
+
+    const updatedteamMember = await teamMember.save()
+    res.json(updatedteamMember)
+  }
+  catch(err){
+    res.status(400).send(err)
+  }
+});
+
 export default router;
