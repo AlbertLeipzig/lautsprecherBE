@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 
 const teamSchema = new mongoose.Schema({
-    approved : {type: Boolean, required: true},
-    fName : {type: String, required: true},
-    lName : {type: String, required: true},
-    mail : {type: String, required: true},
-    image : {type: String, required: true},
-    password: {type: String, required: true},
-    phone: Number,
-    role: {type: String, required: true},
-    socialMedia : Object,
-    website : String
+  address: {type: Object, required: true},
+  approved : {type: Boolean, required: true},
+  concerts: Array,
+  image : String,
+  inhaber: {type: String, required: true},
+  mail : String,
+  phone : Number,
+  placeName: {type: String, required: true},
+  socialMedia: Object,
+  website : String
   }, {
     versionKey: false,
      timestamps: true
